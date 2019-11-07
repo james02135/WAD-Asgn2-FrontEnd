@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./beers.css";
-import "../../fonts";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 
 class Beers extends Component {
   render() {
@@ -15,19 +15,15 @@ class Beers extends Component {
           />
           <div className="card-body">
             <h5 className="card-title ">
-              {`${this.props.beers.name}`}
+              {`${this.props.beers.style}`}
             </h5>
             <p key="category">
               <span> {this.props.beers.category}</span>
             </p>
-            <p key="style">
-              <span> {this.props.beers.style}</span>
-            </p>
-            <p key="ccolor">
+            <p key="color">
               <span> {this.props.beers.color}</span>
             </p>
             <p key="abv">
-              <FontAwesomeIcon icon={["fas", "percentage"]} />
               <span> {this.props.beers.abv}</span>
             </p>
           </div>

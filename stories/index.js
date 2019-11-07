@@ -3,8 +3,9 @@ import { storiesOf } from '@storybook/react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Header from '../src/components/header/';
 import FilterControls from '../src/components/filterControls/'
-import Beers from '../src/components/Beers/'
+import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
+import IPA from '../src/pictures/IPA.jpg'
 
 
 const sample = {
@@ -12,7 +13,7 @@ const sample = {
   style: 'IPA',
   abv: 6,
   color: 'Light yellow to Amber',
-  picture: {thumbnail: '../src/pictures/IPA.jpg'}
+  picture: {thumbnail: {IPA}}
 }
 
 storiesOf("Beer List App/Header", module).add("default", () => (

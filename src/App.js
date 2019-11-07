@@ -1,27 +1,31 @@
 import React, { Component } from "react";
 import Header from "./components/header/";
-
+import BeerList from "./components/beerList/";
+import FilterControls from "./components/filterControls/";
+import IPA from '../src/pictures/IPA.jpg'
 
 
 class App extends Component {
   render() {
     const sample = {
-      brewer: "Sierra Nevada" ,
-      beerName: "Pale Ale",
-      abv: "4.2",
-      picture: { thumbnail: "./profile.png" }
-    };
+      category: 'Ale',
+      style: 'IPA',
+      abv: 6,
+      color: 'Light yellow to Amber',
+      picture: {thumbnail: {IPA}}
+    }
 
-    const contacts = [sample, sample, sample, sample, sample];
+    const beers = [sample, sample, sample, sample, sample];
 
     return (
       <div className="jumbotron">
         <Header noBeers={10} />
         <FilterControls />
-        <beerList  beers={beers} />
+        <BeerList beers={beers} />
       </div>
     );
   }
 }
 
 export default App;
+
