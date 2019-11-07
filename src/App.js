@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
-import Homepage from './components/Homepage'
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from "react";
+import Header from "./components/header/";
+
+
 
 class App extends Component {
   render() {
+    const sample = {
+      brewer: "Sierra Nevada" ,
+      beerName: "Pale Ale",
+      abv: "4.2",
+      picture: { thumbnail: "./profile.png" }
+    };
+
+    const contacts = [sample, sample, sample, sample, sample];
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <Homepage />
-          <h2></h2>
-        </div>
-        <p className="App-intro">
-        </p>
+      <div className="jumbotron">
+        <Header noBeers={10} />
+        <FilterControls />
+        <beerList  beers={beers} />
       </div>
     );
   }
