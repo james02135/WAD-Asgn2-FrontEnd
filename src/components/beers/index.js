@@ -1,31 +1,89 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./beers.css";
+import buttons from "../../config/configButtons";
+import api from '../../dataStore/stubAPI'
 
 
 
 class Beers extends Component {
-  render() {
+  state = {
+    status: "",
+    name: this.props.beers.name,
+    abv: this.props.beers.abv,
+    color: this.props.beers.color,
+    previousDetails: {
+      name: this.props.beers.name,
+      abv: this.props.beers.abv,
+      color: this.props.beers.color,
+    }
+};
+handleEdit = () => this.setState({ status: "edit" });
+handleSave = e => {
+  e.preventDefault();
+  let updatedABV = this.state.abv.trim();
+  let updatedColor = this.state.color.trim();
+  if (!updatedABV || !updatedColor) {
+  return;
+  }
+  let { abv, color } = this.state;
+  this.setState({ status: "", previousDetails: { abv, color } });
+  api.update(this.state.previousDetails.color, updatedABV, updatedColor);
+};      
+handleCancel = () => {
+    let { name, abv, color } = this.state.previousDetails;
+    this.setState({ status: "", name, abv, color });
+  };
+handleABVChange = e => this.setState({ abv: e.target.value });
+handleColorChange = e => this.setState({ color: e.target.value });
+render() {
+    let activeButtons = buttons.normal;
+    let leftButtonHandler = this.handleEdit;
+    let rightButtonHandler = this.handleDelete;
+    let cardColor = "bg-white";
+    if (this.state.status === "edit") {
+      cardColor = "bg-primary";
+      activeButtons = buttons.edit;
+      leftButtonHandler = this.handleSave;
+      rightButtonHandler = this.handleCancel;
+    }
     return (
       <div className="col-sm-3">
-        <div className="card">
-          <img
+      <div className={`card  ${cardColor}`}>
+        <img
             className="card-img-tag center "
             alt={this.props.beers.name}
             src={this.props.beers.picture.thumbnail}
           />
           <div className="card-body">
-            <h5 className="card-title ">
-              {`${this.props.beers.style}`}
-            </h5>
-            <p key="category">
-              <span> {this.props.beers.category}</span>
-            </p>
-            <p key="color">
-              <span> {this.props.beers.color}</span>
-            </p>
-            <p key="abv">
-              <span> {this.props.beers.abv}</span>
-            </p>
+            {this.state.status === "edit" ? (
+              <Fragment>
+                <p>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={this.state.abv}
+                    onChange={this.handleABVChange}
+                  />
+                </p>
+                <p>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={this.state.color}
+                    onChange={this.handleColorChange}
+                  />
+                </p>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p>
+                  <span> {this.props.beers.abv}</span>
+                </p>
+                <p>
+                  <span> {this.props.beers.color} </span>
+                </p>
+              </Fragment>
+            )}
           </div>
           <div className="card-footer">
             <div
@@ -33,11 +91,19 @@ class Beers extends Component {
               role="group"
               aria-label="..."
             >
-              <button type="button" className={"btn btn-default w-100"}>
-                {" Edit "}
+              <button
+                type="button"
+                className={"btn w-100 " + activeButtons.leftButtonColor}
+                onClick={leftButtonHandler}
+              >
+                {activeButtons.leftButtonVal}
               </button>
-              <button type="button" className={"btn btn-danger w-100"}>
-                {"Delete"}
+              <button
+                type="button"
+                className={"btn w-100 " + activeButtons.rightButtonColor}
+                onClick={rightButtonHandler}
+              >
+                {activeButtons.rightButtonVal}
               </button>
             </div>
           </div>
@@ -46,5 +112,4 @@ class Beers extends Component {
     );
   }
 }
-
 export default Beers;
