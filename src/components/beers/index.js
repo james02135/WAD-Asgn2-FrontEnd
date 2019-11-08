@@ -35,6 +35,11 @@ handleCancel = () => {
   };
 handleABVChange = e => this.setState({ abv: e.target.value });
 handleColorChange = e => this.setState({ color: e.target.value });
+handleDelete = () =>  this.setState({ status : 'del'} );
+    handleConfirm = (e) => {
+    e.preventDefault();
+    this.props.deleteHandler(this.state.name);
+    };
 render() {
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
@@ -45,6 +50,11 @@ render() {
       activeButtons = buttons.edit;
       leftButtonHandler = this.handleSave;
       rightButtonHandler = this.handleCancel;
+    } else if (this.state.status === 'del' ) {
+      cardColor = "bg-warning";
+      activeButtons = buttons.delete;
+      leftButtonHandler = this.handleCancel;
+      rightButtonHandler = this.handleConfirm;
     }
     return (
       <div className="col-sm-3">

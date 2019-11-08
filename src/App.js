@@ -21,6 +21,10 @@ class App extends Component {
     //     }
     //     });
     // }
+    deleteContact = (key) => {
+        api.delete(key); 
+        this.setState({});                          
+    };
     render() {
         let beers = api.getAll();
         return (
@@ -28,7 +32,10 @@ class App extends Component {
             <Header noBeers={beers.length} />
             <FilterControls />
             <BeerList beers={beers} />
+            <BeerList beers={beers} 
+        deleteHandler={this.deleteBeers} />
         </div>
+        
         );
     }
 }

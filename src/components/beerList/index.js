@@ -5,7 +5,11 @@ import './beerList.css';
 export default class BeerList extends Component {
   render() {
     const beerCards = this.props.beers.map(c => (
-      <Beers key={c.name} beers={c} />
+      <Beers 
+      key={c.name} 
+      beers={c} 
+      deleteHandler={this.props.deleteHandler}
+      />
     ));
     return (
       <div className="container-fluid beers bg-info">
@@ -14,3 +18,4 @@ export default class BeerList extends Component {
     );
   }
 }
+
