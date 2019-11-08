@@ -8,10 +8,12 @@ import api from '../../dataStore/stubAPI'
 class Beers extends Component {
   state = {
     status: "",
+    category: this.props.beers.category,
     name: this.props.beers.name,
     abv: this.props.beers.abv,
     color: this.props.beers.color,
     previousDetails: {
+      category: this.props.beers.category,
       name: this.props.beers.name,
       abv: this.props.beers.abv,
       color: this.props.beers.color,
@@ -65,6 +67,9 @@ render() {
             src={this.props.beers.picture.thumbnail}
           />
           <div className="card-body">
+          <h5 className="card-title ">
+          {`${this.props.beers.name}`}
+           </h5>
             {this.state.status === "edit" ? (
               <Fragment>
                 <p>

@@ -3,19 +3,19 @@
             "Ale": [ {
                     "Pale Ale": [
                         {
-                            "id": 3,
+                            "id": 1,
                             "name": "Pale Ale",
                             "abv": 4.5,
                             "color": "light gold to yellow"
                         },
                         {
-                            "id": 1,
+                            "id": 2,
                             "name": "IPA",
                             "abv": 6,
                             "color": "light yellow to amber"
                         },
                         {
-                            "id": 2,
+                            "id": 3,
                             "name": "Double IPA",
                             "abv": 8,
                             "color": "yellow to deep amber"

@@ -5,16 +5,16 @@ import Header from '../src/components/header/';
 import FilterControls from '../src/components/filterControls/'
 import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
-import IPA from '../src/pictures/IPA.jpg'
 import { action } from '@storybook/addon-actions';
+
 
 
 const sample = {
   category: 'Ale',
-  style: 'IPA',
-  abv: 6,
-  color: 'Light yellow to Amber',
-  picture: {thumbnail: {IPA}}
+  name: 'IPA',
+  abv: "ABV: 6%",
+  color: 'Color: Light yellow to amber',
+  picture: {thumbnail: '/pictures/IPA.jpg'}
 }
 
 storiesOf("Beer List App/Header", module).add("default", () => (
