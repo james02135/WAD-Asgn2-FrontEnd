@@ -19,16 +19,16 @@ const sample = {
 
 storiesOf("Beer List App/Header", module).add("default", () => (
     <Header noBeers={10} />
-  )); //first addition from header
+)); //first addition from header
 
 storiesOf("Beer List App/Filter Controls", module).add("default", () => (
-    <FilterControls />
-  )); //second addition for filter controls
+    <FilterControls onUserInput={action('Search criteria changes') }/>
+)); //updated filter controls
 
 storiesOf("Beer List App/Beer List", module).add("default", () => { 
     const samples = [sample, sample, sample, sample, sample]
     return <BeerList beers={samples}/>
-  }); //fourth addition for beerList
+}); //fourth addition for beerList
 
 storiesOf("Beer List App/Beers", module).add("default", () => ( 
     <Beers beers={sample} deleteHandler={action('Delete confirmed') }/>
