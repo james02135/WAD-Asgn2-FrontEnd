@@ -6,6 +6,7 @@ import FilterControls from '../src/components/filterControls/'
 import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
 import IPA from '../src/pictures/IPA.jpg'
+import { action } from '@storybook/addon-actions';
 
 
 const sample = {
@@ -24,14 +25,14 @@ storiesOf("Beer List App/Filter Controls", module).add("default", () => (
     <FilterControls />
   )); //second addition for filter controls
 
-storiesOf("Beer List App/Beers", module).add("default", () => ( 
-    <Beers beers={sample}/>
-  )); //third addition for beers
-
 storiesOf("Beer List App/Beer List", module).add("default", () => { 
     const samples = [sample, sample, sample, sample, sample]
     return <BeerList beers={samples}/>
   }); //fourth addition for beerList
+
+storiesOf("Beer List App/Beers", module).add("default", () => ( 
+    <Beers beers={sample} deleteHandler={action('Delete confirmed') }/>
+)); //updated story for beers
 
 
 
