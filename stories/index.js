@@ -26,12 +26,12 @@ storiesOf("Beer List App/Filter Controls", module).add("default", () => (
 
 storiesOf("Beer List App/Beers", module).add("default", () => ( 
     <Beers beers={sample}/>
-  )); 
+  )); //third addition for beers
 
 storiesOf("Beer List App/Beer List", module).add("default", () => { 
     const samples = [sample, sample, sample, sample, sample]
     return <BeerList beers={samples}/>
-  });
+  }); //fourth addition for beerList
 
 
 

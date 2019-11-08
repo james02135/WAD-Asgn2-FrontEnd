@@ -2,29 +2,31 @@ import React, { Component } from "react";
 import Header from "./components/header/";
 import BeerList from "./components/beerList/";
 import FilterControls from "./components/filterControls/";
-import IPA from '../src/pictures/IPA.jpg'
-
+//import request from "superagent";
+import api from "./dataStore/stubAPI"; 
 
 class App extends Component {
-  render() {
-    const sample = {
-      category: 'Ale',
-      style: 'IPA',
-      abv: 6,
-      color: 'Light yellow to Amber',
-      picture: {thumbnail: {IPA}}
+    // componentDidMount() {
+    //     request.get("https://randomuser.me/api/?results=50").end((error, res) => {
+    //     if (res) {
+    //         let { results: contacts } = JSON.parse(res.text);
+    //         api.initialize(contacts);
+    //         this.setState({});
+    //     } else {
+    //         console.log(error);
+    //     }
+    //     });
+    // }
+    render() {
+        let beers = api.getAll();
+        return (
+        <div className="jumbotron">
+            <Header noBeers={beers.length} />
+            <FilterControls />
+            <BeerList beers={beers} />
+        </div>
+        );
     }
-
-    const beers = [sample, sample, sample, sample, sample];
-
-    return (
-      <div className="jumbotron">
-        <Header noBeers={10} />
-        <FilterControls />
-        <BeerList beers={beers} />
-      </div>
-    );
-  }
 }
 
 export default App;
