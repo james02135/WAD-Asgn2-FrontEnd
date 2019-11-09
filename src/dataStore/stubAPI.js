@@ -8,8 +8,8 @@ class StubAPI {
                                 id: 1,
                                 "picture": {IPA},
                                 "name": "Pale Ale",
-                                "abv": 4.5,
-                                "color": "light gold to yellow"
+                                "abv": "ABV: 4.5%",
+                                "color": "Color: light gold to yellow"
                             },
                             {
                                 id: 2,
