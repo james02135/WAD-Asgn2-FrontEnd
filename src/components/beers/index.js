@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./beers.css";
 import buttons from "../../config/configButtons";
 import api from '../../dataStore/stubAPI'
+import { Link } from "react-router-dom";
 
 
 
@@ -62,11 +63,14 @@ render() {
     return (
       <div className="col-sm-3">
       <div className={`card  ${cardColor}`}>
+        <Link
+         to={`/beers/${this.props.beers.name}`}>
         <img
             className="card-img-tag center "
             alt={this.props.beers.name}
             src={this.props.beers.picture}
           />
+        </Link>
           <div className="card-body">
           <h5 className="card-title ">
           {`${this.props.beers.name}`}

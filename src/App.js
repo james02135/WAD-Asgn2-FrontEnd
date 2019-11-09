@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Header from "./components/header/";
 import BeerList from "./components/beerList/";
 import FilterControls from "./components/filterControls/";
 import api from "./dataStore/stubAPI"; 
 import _ from "lodash";
-import { Fragment } from "react";
 
 class App extends Component {
     state = { search: "", category: "all" };
@@ -34,10 +33,10 @@ class App extends Component {
               <FilterControls onUserInput={this.handleChange} />
               <BeerList
                 beers={sortedBeers}
-                deleteHandler={this.deleteBeer}
+                deleteHandler={this.deleteBeers}
               />
             </Fragment>
-        );
+          );
     }
 }
 
