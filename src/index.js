@@ -5,11 +5,11 @@ import request from "superagent";
 import api from "./dataStore/stubAPI"; 
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import App from "./App";
-import BeerPage from "./components/beerPage";
+import BeerPage from "./components/beerPage/beerPage";
 
 class Router extends Component {
   componentDidMount() {
-    request.get("http://localhost:3000").end((error, res) => {
+    request.get("http://localhost:3000/beers").end((error, res) => {
       if (res) {
         let { results: beers } = JSON.parse(res.text);
         api.initialize(beers);

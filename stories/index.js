@@ -7,6 +7,7 @@ import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
 import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Route } from "react-router";
+import BeerDetails from '../src/components/beerDetails/details'
 
 
 
@@ -43,6 +44,10 @@ storiesOf("Beer List App/Beer List", module)
   return <BeerList beers={samples}/>
 }); //Routing change to beerList
 
+storiesOf("Beer List App/Beer Page/Beer Page", module)
+.add("default", () => ( 
+   <BeerDetails user={sample}/>
+));
 
 
 

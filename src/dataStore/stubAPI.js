@@ -1,12 +1,11 @@
 import _ from "lodash";
-import IPA from "../pictures/IPA.jpg"
+//import IPA from "../pictures/IPA.jpg"
 
 class StubAPI {
     constructor() {
         this.beers = [
                             {
                                 id: 1,
-                                "picture": {IPA},
                                 "name": "Pale Ale",
                                 "abv": "ABV: 4.5%",
                                 "color": "Color: light gold to yellow"
@@ -14,152 +13,152 @@ class StubAPI {
                             {
                                 id: 2,
                                 "name": "IPA",
-                                "abv": 6,
-                                "color": "light yellow to amber"
+                                "abv": "ABV: 6",
+                                "color": "Color: light yellow to amber"
                             },
                             {
                                 id: 3,
                                 "name": "Double IPA",
-                                "abv": 8,
-                                "color": "yellow to deep amber"
+                                "abv": "ABV: 8",
+                                "color": "Color: yellow to deep amber"
                             },
                             {
                                 id: 4,
                                 "name": "Barleywine",
-                                "abv": 10,
-                                "color": "amber to deep amber"
+                                "abv": "ABV: 10",
+                                "color": "Color: amber to deep amber"
                             },
                             {
                                 id: 5,
                                 "name": "ESB",
-                                "abv": 4,
-                                "color": "amber to garnet"
+                                "abv": "ABV: 4",
+                                "color": "Color: amber to garnet"
                             },
                             {
                                 id: 6,
                                 "name": "Brown Ale",
-                                "abv": 5,
-                                "color": "garnet to dark brown"
+                                "abv": "ABV: 5",
+                                "color": "Color: garnet to dark brown"
                             },
                             {
                                 id: 7,
                                 "name": "Red Ale",
-                                "abv": 4.5,
-                                "color": "light red to deep maroon"
+                                "abv": "ABV: 4",
+                                "color": "Color: light red to deep maroon"
                             },
                             {
                                 id: 8,
                                 "name": "Wheat (White) Ale",
-                                "abv": 4.5,
-                                "color": "hazy yellow"
+                                "abv": "ABV: 5",
+                                "color": "Color: hazy yellow"
                             },
                             {
                                 id: 9,
                                 "name": "Saison",
-                                "abv": 6,
-                                "color": "hazy light yellow"
+                                "abv": "ABV: 6",
+                                "color": "Color: hazy light yellow"
                             },
                             {
                                 id: 10,
                                 "name": "Golden Ale",
-                                "abv": 7,
-                                "color": "light yellow"
+                                "abv": "ABV: 7",
+                                "color": "Color: light yellow"
                             },
                             {
                                 id: 11,
                                 "name": "Dubbel",
-                                "abv": 8,
-                                "color": "garnet to deep brown"
+                                "abv": "ABV: 8",
+                                "color": "Color: garnet to deep brown"
                             },
                             {
                                 id: 12,
                                 "name": "Tripel",
-                                "abv": 9,
-                                "color": "light yellow to amber"
+                                "abv": "ABV: 9",
+                                "color": "Color: light yellow to amber"
                             },
                             {
                                 id: 13,
                                 "name": "Quad/Apt",
-                                "abv": 10,
-                                "color": "light brown to deep brown"
+                                "abv": "ABV: 10",
+                                "color": "Color: light brown to deep brown"
                             },
                             {
                                 id: 14,
                                 "name": "Porter",
-                                "abv": 5,
-                                "color": "deep maroon to deep brown"
+                                "abv": "ABV: 5",
+                                "color": "Color: deep maroon to deep brown"
                             },
                             {
                                 id: 15,
                                 "name": "Stout",
-                                "abv": 5,
-                                "color": "deep brown to black"
+                                "abv": "ABV: 5",
+                                "color": "Color: deep brown to black"
                             },
                             {
                                 id: 16,
                                 "name": "Imperial Stout",
-                                "abv": 8,
-                                "color": "deep brown to black"
+                                "abv": "ABV: 8",
+                                "color": "Color: deep brown to black"
                             },
                             {
                                 id: 17,
                                 "name": "Barrel-Aged Imperial Stout",
-                                "abv": 10,
-                                "color": "black"
+                                "abv": "ABV: 10",
+                                "color": "Color: black"
                             },
                             {
                                 id: 18,
                                 "name": "Pale Lager",
-                                "abv": 4,
-                                "color": "light yellow"
+                                "abv": "ABV: 4",
+                                "color": "Color: light yellow"
                             },
                             {
                                 id: 19,
                                 "name": "Amber Lager",
-                                "abv": 5,
-                                "color": "amber"
+                                "abv": "ABV: 5",
+                                "color": "Color: amber"
                             },
                             {
                                 id: 20,
                                 "name": "Black Lager",
-                                "abv": 5,
-                                "color": "deep brown to black"
+                                "abv": "ABV: 5",
+                                "color": "Color: deep brown to black"
                             },
                             {
                                 id: 21,
                                 "name": "Steam Beer",
-                                "abv": 4.5,
-                                "color": "yellow to amber"
+                                "abv": "ABV: 4.5",
+                                "color": "Color: yellow to amber"
                             },
                             {
                                 id: 22,
                                 "name": "Pilsener",
-                                "abv": 4,
-                                "color": "very light yellow"
+                                "abv": "ABV: 4",
+                                "color": "Color: very light yellow"
                             },
                             {
                                 id: 23,
                                 "name": "Kolsch",
-                                "abv": 4,
-                                "color": "light yellow"
+                                "abv": "ABV: 4",
+                                "color": "Color: light yellow"
                             },
                             {
                                 id: 24,
                                 "name": "Helles",
-                                "abv": 4.5,
-                                "color": "hazy yellow"
+                                "abv": "ABV: 4.5",
+                                "color": "Color: hazy yellow"
                             },
                             {
                                 id: 25,
                                 "name": "Bock",
-                                "abv": 7,
-                                "color": "light red to deep maroon"
+                                "abv": "ABV: 7",
+                                "color": "Color: light red to deep maroon"
                             },
                             {
                                 id: 26,
                                 "name": "Hefeweizen",
-                                "abv": 5,
-                                "color": "hazy yellow to amber"
+                                "abv": "ABV: 5",
+                                "color": "Color: hazy yellow to amber"
                             }
                         
                     
