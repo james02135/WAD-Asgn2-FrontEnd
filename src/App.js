@@ -2,30 +2,18 @@ import React, { Component } from "react";
 import Header from "./components/header/";
 import BeerList from "./components/beerList/";
 import FilterControls from "./components/filterControls/";
-import request from "superagent";
-import api from "./dataStore/stubAPI";
-import _ from "lodash"; 
+import api from "./dataStore/stubAPI"; 
+import _ from "lodash";
+import { Fragment } from "react";
 
 class App extends Component {
-    
-    state = { search: "", name: "all" };
+    state = { search: "", category: "all" };
     handleChange = (type, value) => {
         type === "name"
         ? this.setState({ search: value })
-        : this.setState({ gender: value });
+        : this.setState({ category: value });
     };
-    componentDidMount() {
-        request.get("./beerList.json").end((error, res) => {
-        if (res) {
-            let { results: beers } = JSON.parse(res.text);
-            api.initialize(beers);
-            this.setState({});
-        } else {
-            console.log(error);
-        }
-        });
-    }
-    deleteContact = (key) => {
+    deleteBeer = (key) => {
         api.delete(key); 
         this.setState({});                          
     };
@@ -41,14 +29,14 @@ class App extends Component {
             : filteredBeers.filter(c => c.category === this.state.category);
         let sortedBeers = _.sortBy(filteredBeers, c => c.name);
         return (
-        <div className="jumbotron">
-            <Header noBeers={sortedBeers.length} />
-            <FilterControls 
-            onUserInput={this.handleChange}
-            />
-            <BeerList beers={sortedBeers}
-            deleteHandler={this.deleteBeers} />
-        </div>
+            <Fragment>
+              <Header noBeers={sortedBeers.length} />
+              <FilterControls onUserInput={this.handleChange} />
+              <BeerList
+                beers={sortedBeers}
+                deleteHandler={this.deleteBeer}
+              />
+            </Fragment>
         );
     }
 }

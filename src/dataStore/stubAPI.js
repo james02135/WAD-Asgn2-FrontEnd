@@ -1,12 +1,12 @@
 import _ from "lodash";
+import IPA from "../pictures/IPA.jpg"
 
 class StubAPI {
     constructor() {
-        this.beers = [{
-                "Ale": [ {
-                        "Pale Ale": [
+        this.beers = [
                             {
                                 id: 1,
+                                "picture": {IPA},
                                 "name": "Pale Ale",
                                 "abv": 4.5,
                                 "color": "light gold to yellow"
@@ -28,9 +28,7 @@ class StubAPI {
                                 "name": "Barleywine",
                                 "abv": 10,
                                 "color": "amber to deep amber"
-                            }
-                        ],
-                        "English Ale": [
+                            },
                             {
                                 id: 5,
                                 "name": "ESB",
@@ -48,9 +46,7 @@ class StubAPI {
                                 "name": "Red Ale",
                                 "abv": 4.5,
                                 "color": "light red to deep maroon"
-                            }
-                        ],
-                        "Belgian Ale": [
+                            },
                             {
                                 id: 8,
                                 "name": "Wheat (White) Ale",
@@ -86,9 +82,7 @@ class StubAPI {
                                 "name": "Quad/Apt",
                                 "abv": 10,
                                 "color": "light brown to deep brown"
-                            }
-                        ],
-                        "Stout": [
+                            },
                             {
                                 id: 14,
                                 "name": "Porter",
@@ -112,11 +106,7 @@ class StubAPI {
                                 "name": "Barrel-Aged Imperial Stout",
                                 "abv": 10,
                                 "color": "black"
-                            }
-                        ]
-                }],
-                "Lager": [ {
-                        "United States": [
+                            },
                             {
                                 id: 18,
                                 "name": "Pale Lager",
@@ -140,9 +130,7 @@ class StubAPI {
                                 "name": "Steam Beer",
                                 "abv": 4.5,
                                 "color": "yellow to amber"
-                            }
-                        ],
-                        "Europe": [
+                            },
                             {
                                 id: 22,
                                 "name": "Pilsener",
@@ -173,10 +161,10 @@ class StubAPI {
                                 "abv": 5,
                                 "color": "hazy yellow to amber"
                             }
-                        ]
-                    }
-                ]
-            }
+                        
+                    
+                
+            
         ];
     }
 

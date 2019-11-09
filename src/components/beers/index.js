@@ -5,6 +5,7 @@ import api from '../../dataStore/stubAPI'
 
 
 
+
 class Beers extends Component {
   state = {
     status: "",
@@ -64,7 +65,7 @@ render() {
         <img
             className="card-img-tag center "
             alt={this.props.beers.name}
-            src={this.props.beers.picture.thumbnail}
+            src={this.props.beers.picture}
           />
           <div className="card-body">
           <h5 className="card-title ">
