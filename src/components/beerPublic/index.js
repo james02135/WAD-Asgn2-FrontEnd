@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { capitalize } from "../../util";
-import "./beerDetails.css";
+import "./beerPublic.css";
 import { Link } from "react-router-dom";
-import BeerDetails from "../beerDetails/beerDetails"
+import BeerProfile from "./beerProfile";
 
 export default ({ user }) => {
   const Name = capitalize(`${user.name}`);
@@ -23,7 +23,7 @@ export default ({ user }) => {
           <img src={user.picture.large} className="beer" alt={Name} />
         </div>
         <div className="col-4">
-          <BeerDetails user={user} />
+          <BeerProfile user={user} />
         </div>
       </div>
     </Fragment>

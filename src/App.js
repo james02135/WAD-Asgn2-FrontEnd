@@ -33,7 +33,7 @@ class App extends Component {
               <FilterControls onUserInput={this.handleChange} />
               <BeerList
                 beers={sortedBeers}
-                deleteHandler={this.deleteBeers}
+                deleteHandler={this.deleteBeer}
               />
             </Fragment>
           );

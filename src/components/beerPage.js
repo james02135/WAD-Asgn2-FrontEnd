@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import api from "../../dataStore/stubAPI"; 
-import BeerDetails from "../beerDetails/beerDetails";
-import Name from "../beerDetails/index"
+import api from "../dataStore/stubAPI"; 
+import BeerPublic from "./beerPublic";
+
 
 const BeerPage = props => {
   const { id } = props.match.params;
@@ -11,11 +11,10 @@ const BeerPage = props => {
     <Fragment>
       {beers ? (
         <Fragment>
-          <BeerDetails user={beers} />           
-          <Name user={beers} />
+          <BeerPublic user={beers} />           
         </Fragment>
       ) : (
-        <p>Waiting for contact details</p>
+        <p>Waiting for beer details</p>
       )}
     </Fragment>
   );

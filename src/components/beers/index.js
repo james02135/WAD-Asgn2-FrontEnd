@@ -19,31 +19,31 @@ class Beers extends Component {
       abv: this.props.beers.abv,
       color: this.props.beers.color,
     }
-};
-handleEdit = () => this.setState({ status: "edit" });
-handleSave = e => {
-  e.preventDefault();
-  let updatedABV = this.state.abv.trim();
-  let updatedColor = this.state.color.trim();
-  if (!updatedABV || !updatedColor) {
-  return;
-  }
-  let { abv, color } = this.state;
-  this.setState({ status: "", previousDetails: { abv, color } });
-  api.update(this.state.previousDetails.color, updatedABV, updatedColor);
-};      
-handleCancel = () => {
+  };
+  handleEdit = () => this.setState({ status: "edit" });
+  handleSave = e => {
+        e.preventDefault();
+        let updatedABV = this.state.abv.trim();
+        let updatedColor = this.state.color.trim();
+        if (!updatedABV || !updatedColor) {
+        return;
+        }
+        let { abv, color } = this.state;
+        this.setState({ status: "", previousDetails: { abv, color } });
+        api.update(this.state.previousDetails.name, updatedABV, updatedColor);
+  };      
+  handleCancel = () => {
     let { name, picture, abv, color } = this.state.previousDetails;
     this.setState({ status: "", name, picture, abv, color });
   };
-handleABVChange = e => this.setState({ abv: e.target.value });
-handleColorChange = e => this.setState({ color: e.target.value });
-handleDelete = () =>  this.setState({ status : 'del'} );
-    handleConfirm = (e) => {
+  handleABVChange = e => this.setState({ abv: e.target.value });
+  handleColorChange = e => this.setState({ color: e.target.value });
+  handleDelete = () =>  this.setState({ status : 'del'} );
+  handleConfirm = (e) => {
     e.preventDefault();
     this.props.deleteHandler(this.state.name);
-    };
-render() {
+  };
+  render() {
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
     let rightButtonHandler = this.handleDelete;

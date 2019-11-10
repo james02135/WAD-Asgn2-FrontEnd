@@ -1,4 +1,32 @@
 .beers {
     padding: 10px;
     margin-top: 0px;
+    background-color: beige;
+}
+
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    height: 50%;
+}
+  
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+.card-img-tag {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.card {
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
 }

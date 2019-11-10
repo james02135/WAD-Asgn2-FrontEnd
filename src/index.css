@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  height: 50%;
+}
+
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
+.card-img-top {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
