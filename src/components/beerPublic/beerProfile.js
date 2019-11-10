@@ -1,23 +1,16 @@
 import React, { Fragment } from "react";
-import { capitalize } from "../../util";
+// import "../../fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default ({ user }) => {
-  const BeerDetails = capitalize(
-    `${user.category}, ${user.name}, ${user.abv}`
-  );
+export default ({ beers }) => {
+  const BeerProfile = `${beers.category}, ${beers.name}, ${beers.abv}`;
   return (
     <Fragment>
       <h4>
-        <span> {BeerDetails}</span>
+        <span> {BeerProfile}</span>
       </h4>
       <h4>
-        <span> {user.category}</span>
-      </h4>
-      <h4>
-        <span> {user.name}</span>
-      </h4>
-      <h4>
-        <span> {user.abv}</span>
+        <span> {beers.description}</span>
       </h4>
     </Fragment>
   );

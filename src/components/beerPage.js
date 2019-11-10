@@ -11,7 +11,7 @@ const BeerPage = props => {
     <Fragment>
       {beers ? (
         <Fragment>
-          <BeerPublic user={beers} />           
+          <BeerPublic beers={beers} />           
         </Fragment>
       ) : (
         <p>Waiting for beer details</p>
