@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import { capitalize } from "../../util";
 
 export default ({ user }) => {
-  const details = capitalize(
+  const BeerDetails = capitalize(
     `${user.category}, ${user.name}, ${user.abv}`
   );
   return (
     <Fragment>
       <h4>
-        <span> {details}</span>
+        <span> {BeerDetails}</span>
       </h4>
       <h4>
         <span> {user.category}</span>

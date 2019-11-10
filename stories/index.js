@@ -49,6 +49,11 @@ storiesOf("Beer List App/Beer Page/Beer Page", module)
    <BeerDetails user={sample}/>
 ));
 
+storiesOf("Beer List App/Contact Page/ContactPrivate", module)
+.add("default", () => ( 
+   <ContactPrivateDetails user={sample}/>
+));
+
 
 
 
