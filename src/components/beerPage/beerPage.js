@@ -1,11 +1,22 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
+import api from "../../dataStore/stubAPI"; 
+import BeerDetails from "../beerDetails/beerDetails";
+import Name from "../beerDetails/index"
 
 const BeerPage = props => {
-   return (
+  const { id } = props.match.params;
+  const beers = api.find(id);
+  return (
     <Fragment>
-        <h3> Beer id: {props.match.params.id} </h3>
-        <h3> Detail page stub </h3>
+      {beers ? (
+        <Fragment>
+          <BeerDetails user={beers} />           
+          <Name user={beers} />
+        </Fragment>
+      ) : (
+        <p>Waiting for contact details</p>
+      )}
     </Fragment>
   );
 };

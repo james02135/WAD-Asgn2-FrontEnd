@@ -12,8 +12,8 @@ class App extends Component {
         ? this.setState({ search: value })
         : this.setState({ category: value });
     };
-    deleteBeer = (key) => {
-        api.delete(key); 
+    deleteBeer = (id) => {
+        api.delete(id); 
         this.setState({});                          
     };
     render() {
@@ -26,7 +26,7 @@ class App extends Component {
         this.state.category === "all"
             ? filteredBeers
             : filteredBeers.filter(c => c.category === this.state.category);
-        let sortedBeers = _.sortBy(filteredBeers, c => c.name);
+        let sortedBeers = _.sortBy(filteredBeers, c => c.id);
         return (
             <Fragment>
               <Header noBeers={sortedBeers.length} />

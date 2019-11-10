@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BeerDetails from "../beerDetails/beerDetails"
 
 export default ({ user }) => {
-  const name = capitalize(`${user.name}`);
+  const Name = capitalize(`${user.name}`);
   return (
     <Fragment>
       <div className="row">
@@ -15,12 +15,12 @@ export default ({ user }) => {
         </Link>
         </div>
         <div className="col-3 offset-2">
-          <h2>{name}</h2>
+          <h2>{Name}</h2>
         </div>
       </div>
       <div className="row">
         <div className="col-3">
-          <img src={user.picture.large} className="beer" alt={name} />
+          <img src={user.picture.large} className="beer" alt={Name} />
         </div>
         <div className="col-4">
           <BeerDetails user={user} />

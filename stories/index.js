@@ -7,7 +7,7 @@ import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
 import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Route } from "react-router";
-import BeerDetails from '../src/components/beerDetails/details'
+import BeerDetails from '../src/components/beerDetails/beerDetails'
 
 
 
@@ -49,10 +49,6 @@ storiesOf("Beer List App/Beer Page/Beer Page", module)
    <BeerDetails user={sample}/>
 ));
 
-storiesOf("Beer List App/Contact Page/ContactPrivate", module)
-.add("default", () => ( 
-   <ContactPrivateDetails user={sample}/>
-));
 
 
 

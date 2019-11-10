@@ -26,7 +26,7 @@ export default class FilterControls extends Component {
                 />
                 <span> Category: </span>
                 <select
-                    id="category"
+                    type="category"
                     onChange={this.handleCategory}
                 >
                     <option value="all">All</option>

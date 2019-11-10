@@ -4,19 +4,18 @@ import buttons from "../../config/configButtons";
 import api from '../../dataStore/stubAPI'
 import { Link } from "react-router-dom";
 
-
-
-
 class Beers extends Component {
   state = {
     status: "",
     category: this.props.beers.category,
     name: this.props.beers.name,
+    picture: this.props.beers.picture,
     abv: this.props.beers.abv,
     color: this.props.beers.color,
     previousDetails: {
       category: this.props.beers.category,
       name: this.props.beers.name,
+      picture: this.props.beers.picture,
       abv: this.props.beers.abv,
       color: this.props.beers.color,
     }
@@ -34,8 +33,8 @@ handleSave = e => {
   api.update(this.state.previousDetails.color, updatedABV, updatedColor);
 };      
 handleCancel = () => {
-    let { name, abv, color } = this.state.previousDetails;
-    this.setState({ status: "", name, abv, color });
+    let { name, picture, abv, color } = this.state.previousDetails;
+    this.setState({ status: "", name, picture, abv, color });
   };
 handleABVChange = e => this.setState({ abv: e.target.value });
 handleColorChange = e => this.setState({ color: e.target.value });
@@ -68,7 +67,7 @@ render() {
         <img
             className="card-img-tag center "
             alt={this.props.beers.name}
-            src={this.props.beers.picture}
+            src={this.props.beers.picture.thumbnail}
           />
         </Link>
           <div className="card-body">
