@@ -26,8 +26,6 @@ ___________       _____________        ______________
 | BeerList |=====>|BeerPage    |======>|User Reviews |
 |__________|      |____________|       |_____________|
 
-![][model]
-
 The user is first brought to the Beer List of 26 different styles of beer
 The user can filter the results using a name search text box, or a drop-down menu
 The user can update and/or delete each beer or it's specs
