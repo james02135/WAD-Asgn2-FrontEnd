@@ -1,13 +1,14 @@
 import React from "react";
-import "./contactPrivate.css";
+import "./beerPrivate.css";
 import "../../fontawesome";
+
 
 export default ({ user }) => {
   return (
     <div className="row">
       <div className="col-12">
         <ul className="specs">
-          <li>
+          {/* <li>
             <span>Login</span>
             <dl>
               <dt>UUID</dt>
@@ -17,33 +18,34 @@ export default ({ user }) => {
               <dt>Password</dt>
               <dd>{user.login.password}</dd>
             </dl>
-          </li>
+          </li> */}
           <li>
-            <span>Coordinates</span>
+            <span>Review</span>
             <dl>
-              <dt>Longitude</dt>
-              <dd>{user.location.coordinates.longitude}</dd>
-              <dt>Latitude</dt>
-              <dd>{user.location.coordinates.latitude}</dd>
+              <dt>Aroma</dt>
+              <dd>1-10: </dd>
+              <dt>Color</dt>
+              <dd>1-10: </dd>
+              <dt>Mouthfeel</dt>
+              <dd>1-10: </dd>
+              <dt>Flavor</dt>
+              <dd>1-10: </dd>
+              <dt>Overall</dt>
+              <dd>1-10: </dd>
             </dl>
           </li>
           <li>
-            <span>Timezone</span>
-            <dl>
-              <dt>Offset</dt>
-              <dd>{user.location.timezone.offset}</dd>
-              <dt>Description</dt>
-              <dd>{user.location.timezone.description}</dd>
-            </dl>
-          </li>
-          <li>
-            <span>Registered</span>
-            <dl>
-              <dt>Date</dt>
-              <dd>{user.registered.date}</dd>
-              <dt>Age</dt>
-              <dd>{user.registered.age}</dd>
-            </dl>
+            <span>Your Scores</span>
+            <dt>Aroma</dt>
+            <dd>7</dd>
+            <dt>Color</dt>
+            <dd>6</dd>
+            <dt>Mouthfeel</dt>
+            <dd>6</dd>
+            <dt>Flavor</dt>
+            <dd>7</dd>
+            <dt>Overall</dt>
+            <dd>6.5</dd>
           </li>
         </ul>
       </div>
