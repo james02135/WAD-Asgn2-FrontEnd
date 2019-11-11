@@ -8,17 +8,6 @@ export default ({ user }) => {
     <div className="row">
       <div className="col-12">
         <ul className="specs">
-          {/* <li>
-            <span>Login</span>
-            <dl>
-              <dt>UUID</dt>
-              <dd>{user.login.uuid}</dd>
-              <dt>Username</dt>
-              <dd>{user.login.username}</dd>
-              <dt>Password</dt>
-              <dd>{user.login.password}</dd>
-            </dl>
-          </li> */}
           <li>
             <span>Review</span>
             <dl>

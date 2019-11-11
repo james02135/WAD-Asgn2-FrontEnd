@@ -7,7 +7,8 @@ import Beers from '../src/components/beers/'
 import BeerList from '../src/components/beerList/'
 import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Route } from "react-router";
-import BeerDetails from '../src/components/beerDetails/beerDetails'
+import BeerProfile from '../src/components/beerPublic/beerProfile';
+import BeerPrivateDetails from '../src/components/beerPrivate';
 
 
 
@@ -44,9 +45,14 @@ storiesOf("Beer List App/Beer List", module)
   return <BeerList beers={samples}/>
 }); //Routing change to beerList
 
-storiesOf("Beer List App/Beer Page/Beer Page", module)
+storiesOf("Beer List App/Beer Page/BeerProfile", module)
 .add("default", () => ( 
-   <BeerDetails user={sample}/>
+   <BeerProfile beers={sample}/>
+));
+
+storiesOf("Beer List App/Beer Page/BeerPrivate", module)
+.add("default", () => ( 
+   <BeerPrivateDetails beers={sample}/>
 ));
 
 
