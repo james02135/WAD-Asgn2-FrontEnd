@@ -16,6 +16,10 @@ class App extends Component {
         api.delete(id); 
         this.setState({});                          
     };
+    addBeer = (category, name, abv, color, description, examples) => {
+        api.addBeer(category, name, abv, color, description, examples);
+        this.setState({});
+    }
     render() {
         let beers = api.getAll();
         let filteredBeers = beers.filter(c => {
@@ -30,7 +34,9 @@ class App extends Component {
         return (
             <Fragment>
               <Header noBeers={sortedBeers.length} />
-              <FilterControls onUserInput={this.handleChange} />
+              <FilterControls 
+                onUserInput={this.handleChange}
+                addNewBeer={this.addBeer} />
               <BeerList
                 beers={sortedBeers}
                 deleteHandler={this.deleteBeer}

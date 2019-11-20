@@ -1,8 +1,18 @@
 import _ from "lodash";
-//import IPA from "../pictures/IPA.jpg"
+
 
 class StubAPI {
     constructor() {
+        this.beerReview = [
+            {
+                id: 1,
+                "aroma": "",
+                "mouthfeel": "",
+                "color": "",
+                "flavour": "",
+                "comments": ""
+            }
+        ]
         this.beers = [
                     {
                         id: 1,
@@ -267,7 +277,26 @@ class StubAPI {
         ];
     }
 
-    find(id) {
+    addBeer(category, name, abv, color, description, examples) {
+        let id = 1;
+        let last = _.last(this.beers);
+        if (last) {
+        id = last.id + 1;
+        }
+        let len = this.beers.length;
+        let newLen = this.beers.push({
+        id,
+        category,
+        name,
+        abv,
+        color,
+        description,
+        examples
+        });
+        return newLen > len;
+    }
+
+    findBeer(id) {
         let index = _.findIndex(
         this.beers,
         beers => `${beers.name}` === id
@@ -278,13 +307,25 @@ class StubAPI {
         return null;
     }
 
+    findBeerReview(id) {
+        let index = _.findIndex(
+            this.beerReview,
+            beerReview => `${beerReview}` === id
+        );
+        if (index !== -1) {
+            return this.beerReview[index];
+        }
+        return null;
+    }
+
     delete(k) {
         let elements = _.remove(this.beers, beers => beers.name === k);
         return elements;
     }
 
-    initialize(beers) {
+    initialize(beers, beerReview) {
         this.beers = beers;
+        this.beerReview = beerReview;
     }
 
     getAll() {
@@ -297,11 +338,30 @@ class StubAPI {
         return result;
     }
 
-    update(key, abv, color) {
+    getBeerReview(id) {
+        let index = _.findIndex(this.beerReview, beerReview => beerReview.id === id);
+        let result = index !== -1 ? this.beerReview[index] : null;
+        return result;
+    }
+
+    updateBeer(key, abv, color) {
         let index = _.findIndex(this.beers, beers => beers.name === key);
         if (index !== -1) {
         this.beers[index].abv = abv;
         this.beers[index].color = color;
+        return true;
+        }
+        return false;
+    }
+
+    updateBeerReview(key, aroma, mouthfeel, color, flavor, comments) {
+        let index = _.findIndex(this.beerReview, beerReview => beerReview.id === key);
+        if (index !== -1) {
+        this.beerReview[index].aroma = aroma;
+        this.beerReview[index].mouthfeel = mouthfeel;
+        this.beerReview[index].color = color;
+        this.beerReview[index].flavor = flavor;
+        this.beerReview[index].comments = comments;
         return true;
         }
         return false;

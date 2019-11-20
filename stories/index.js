@@ -9,6 +9,7 @@ import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Route } from "react-router";
 import BeerProfile from '../src/components/beerPublic/beerProfile';
 import BeerPrivateDetails from '../src/components/beerPrivate';
+import BeerForm from '../src/components/addBeerForm';
 
 
 
@@ -54,6 +55,10 @@ storiesOf("Beer List App/Beer Page/BeerPrivate", module)
 .add("default", () => ( 
    <BeerPrivateDetails beers={sample}/>
 ));
+
+storiesOf("Beer List App/Add Beer Form", module)
+.add("default", () => <BeerForm/>
+);
 
 
 

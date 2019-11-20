@@ -3,7 +3,7 @@ import "./beerPrivate.css";
 import "../../fontawesome";
 
 
-export default ({ user }) => {
+export default ({ review }) => {
   return (
     <div className="row">
       <div className="col-12">

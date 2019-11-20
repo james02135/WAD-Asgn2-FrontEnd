@@ -4,7 +4,7 @@ import buttons from "../../config/configButtons";
 import api from '../../dataStore/stubAPI'
 import { Link } from "react-router-dom";
 
-class Beers extends Component {
+export default class Beers extends Component {
   state = {
     status: "",
     category: this.props.beers.category,
@@ -30,7 +30,7 @@ class Beers extends Component {
         }
         let { abv, color } = this.state;
         this.setState({ status: "", previousDetails: { abv, color } });
-        api.update(this.state.previousDetails.name, updatedABV, updatedColor);
+        api.updateBeer(this.state.previousDetails.name, updatedABV, updatedColor);
   };      
   handleCancel = () => {
     let { name, picture, abv, color } = this.state.previousDetails;
@@ -131,4 +131,3 @@ class Beers extends Component {
     );
   }
 }
-export default Beers;

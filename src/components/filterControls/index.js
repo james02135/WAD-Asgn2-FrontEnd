@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import "./filterControls.css"
+import "./filterControls.css";
+import { Route, Link } from "react-router-dom";
+import "../addBeerForm/index"
+import AddBeer from "../addBeerForm/index";
 
 export default class FilterControls extends Component {
     handleChange = (e, type, value) => {
@@ -16,16 +19,20 @@ export default class FilterControls extends Component {
         return (
         <div className="container-fluid">
             <div className="row bg-warning">
-            <div className="col-md-12">
+            
                 <h4>
-                <span>Filter </span>
+
+                <span className="col-md-2">Filter </span>
                 <input
+                    className="col-md-3"
                     type="text"
                     placeholder="Name Search"
                     onChange={this.handleTextChange}
                 />
-                <span> Category: </span>
+
+                <span className="col-md-2"> Category: </span>
                 <select
+                    className="col-md-2"
                     type="category"
                     onChange={this.handleCategoryChange}
                 >
@@ -33,8 +40,16 @@ export default class FilterControls extends Component {
                     <option value="Ale">Ale</option>
                     <option value="Lager">Lager</option>
                 </select>
+
+                <span className="col-md-3"> 
+                <Link class="btn btn-light active float-right"
+                    to={'/addBeer'}>Add A Beer</Link> 
+                <Route path="/addBeer" component= {AddBeer} />
+            
+                </span>
+
                 </h4>
-            </div>
+            
             </div>
         </div>
         );
