@@ -15,18 +15,16 @@ beer style. There is a private section where the user can enter their own review
 
 ## Setup.
 
-1: Open a terminal and navigate to the base folder
-2: Run command: npm install
-3: Run command: npm remove csstools/normalize.css
-4: Run command: npm install csstools/normalize.css
-5: Run command: npm start
+- Open a terminal and navigate to the base folder
+- Run command: npm install
+- Run command: npm remove csstools/normalize.css
+- Run command: npm install csstools/normalize.css
+- Run command: npm start
 
 ## Data Model Design.
 ___________       _____________        ______________ 
 | BeerList |=====>|BeerPage    |======>|User Reviews |
 |__________|      |____________|       |_____________|
-
-![][model]
 
 The user is first brought to the Beer List of 26 different styles of beer
 The user can filter the results using a name search text box, or a drop-down menu
