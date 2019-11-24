@@ -7,6 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
+    "dotenv": "^8.2.0",
     "lodash": "^4.17.15",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -17,10 +18,7 @@
     "superagent": "^5.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "nodemon --exec babel-node index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,10 +32,15 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/react": "^5.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
     "cypress": "^3.1.5",
+    "eslint": "^6.7.0",
+    "eslint-plugin-react": "^7.16.0",
     "nodemon": "^2.0.1"
   }
 }
