@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./beers.css";
-import buttons from "../../config/configButtons";
+import buttons from "../../config/mainButtons";
 import api from '../../dataStore/stubAPI'
 import { Link } from "react-router-dom";
 
@@ -73,7 +73,7 @@ export default class Beers extends Component {
           <div className="card-body">
           <h5 className="card-title ">
           {`${this.props.beers.name}`}
-           </h5>
+          </h5>
             {this.state.status === "edit" ? (
               <Fragment>
                 <p>

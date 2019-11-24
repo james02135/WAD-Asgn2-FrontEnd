@@ -13,9 +13,13 @@ class App extends Component {
         : this.setState({ category: value });
     };
     deleteBeer = (id) => {
-        api.delete(id); 
+        api.deleteBeer(id); 
         this.setState({});                          
     };
+    deleteBeerReview = (name) => {
+      api.deleteBeerReview(name);
+      this.setState({});
+    }
     addBeer = (category, name, abv, color, description, examples) => {
         api.addBeer(category, name, abv, color, description, examples);
         this.setState({});
