@@ -4,46 +4,36 @@ import Help from "./helpPage";
 import { Route, Link } from "react-router-dom";
 import axios from 'axios';
 import reviewButtons from "../../config/reviewButtons";
+import "../beers";
 
 
 export default class BeerReview extends Component {
-    state = {
-        status: "",
-        beerName: this.props.beerName,
-        date: this.props.date,
-        comments: this.props.comments,
-        previousDetails: {
-          beerName: this.props.beerName,
-          date: this.props.date,
-          comments: this.props.comments,
-        }
-    };
+    state = { beerName: "", date: "", comments: ""};
+
+    handleBeerNameChange = e => this.setState({ beerName: e.target.value });
+    handleDateChange = e => this.setState({ date: e.target.value });
+    handleCommentsChange = e => this.setState({ comments: e.target.value });
 
     handleEdit = () => this.setState({ status: "edit" });
-
-    handleSave = async e => {
-          e.preventDefault();
-          let updatedBeerName = this.state.beerName;
-          let updatedDate = this.state.date;
-          let updatedComments = this.state.comments;
-          if (!updatedBeerName || !updatedDate || !updatedComments) {
-          return;
-          }
-          let { beerName, date, comments } = this.state;
-          this.setState({ status: "", previousDetails: { beerName, date, comments } });
-          await axios.post('http://localhost:8080/addReview', {updatedBeerName, updatedDate, updatedComments});
-    };    
+    handleDelete = () =>  this.setState({ status : 'del'} );
 
     handleCancel = () => {
       let { beerName, date, comments } = this.state.previousDetails;
       this.setState({ status: "", beerName, date, comments });
     };
 
-    handleBeerNameChange = e => this.setState({ beerName: e.target.value });
-    handleDateChange = e => this.setState({ date: e.target.value });
-    handleCommentsChange = e => this.setState({ comments: e.target.value });
-
-    handleDelete = () =>  this.setState({ status : 'del'} );
+    handleSave = async e => {
+      e.preventDefault();
+      let updatedBeerName = this.state.beerName;
+      let updatedDate = this.state.date;
+      let updatedComments = this.state.comments;
+      if (!updatedBeerName || !updatedDate || !updatedComments) {
+      return;
+      }
+      let { beerName, date, comments } = this.state;
+      this.setState({ status: "", previousDetails: { beerName, date, comments } });
+      await axios.post('http://localhost:8080/addReview', {updatedBeerName, updatedDate, updatedComments});
+}; 
 
     handleConfirm = async (e) => {
       e.preventDefault();
@@ -73,8 +63,21 @@ export default class BeerReview extends Component {
                 <Fragment>
                     <h3>Add a New Beer Review</h3>
                 </Fragment>
-                 
                 <Fragment>
+                  <div>
+                  {/* <h4>
+                    <span>
+                    {beers.description}
+                    </span>
+                  </h4>
+                  </div>
+                  <div>
+                  <h4>
+                    <span>
+                      Noted Examples: {beers.examples}
+                    </span>
+                  </h4> */}
+                  </div>
                         <div className="form-group">
                             <input type="text"
                                 className="form-control"

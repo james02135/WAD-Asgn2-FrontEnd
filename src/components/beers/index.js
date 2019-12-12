@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import "./beers.css";
 import buttons from "../../config/mainButtons";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import BeerReview from "../beerReview";
 
 
 
@@ -73,18 +74,15 @@ export default class Beers extends Component {
     }
 
     const placeholder = (this.props.beers.picture) ? this.props.beers.picture.thumbnail : '';
-
+    const _id = this.props.beers._id;
     return (
       <div className="col-sm-3">
       <div className={`card  ${cardColor}`}>
-        <Link
-         to={`/beers/${this.props.beers.name}`}>
         <img
             className="card-img-tag center "
             alt={this.props.beers.name}
             src={placeholder}
           />
-        </Link>
           <div className="card-body">
           <h5 className="card-title ">
           {`${this.props.beers.name}`}
@@ -116,6 +114,8 @@ export default class Beers extends Component {
                 <p>
                   <span> {this.props.beers.color} </span>
                 </p>
+                <Link className="btn btn-primary active" to={`/beers/${_id}/review`}>Review a Beer in This Style</Link>
+                <Route path={"/beers/:id/review"} component= {BeerReview}/> 
               </Fragment>
             )}
           </div>

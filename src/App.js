@@ -12,14 +12,11 @@ export class App extends Component {
 
     state = { search: "", category: "all", beers: [], reviews: [{}], login:false };
   
-
     handleChange = (type, value) => {
         type === "name"
         ? this.setState({ search: value })
         : this.setState({ category: value });
     };
-
-    
 
     updateBeer = async ({_id, color, abv}) => {
       await axios.post(`http://localhost:8080/updateBeer/${_id}`, { color, abv }).then(res=> {
@@ -36,20 +33,6 @@ export class App extends Component {
         console.log(res.data)
       });
       this.getBeers();
-    };
-
-    addBeerReview = async (_id) => {
-      //TODO
-    }
-
-
-    updateBeerReview = async (_id, review) => {
-      //TODO
-    }
-
-    deleteBeerReview = async (_id, review) => {
-      await axios.delete(`http://localhost:8080/deleteReview/`, { params: {_id, review}});
-      this.setState({});
     };
 
     getBeers = async () => {

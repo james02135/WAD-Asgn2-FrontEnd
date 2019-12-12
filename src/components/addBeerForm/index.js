@@ -26,7 +26,6 @@ export default class Form extends Component {
         await axios.post('http://localhost:8080/addBeer', {category, name, abv, color, description, examples, picture}).then(res=> {
           console.log(res);
           console.log(res.data);
-          console.log("got here");
         });
     };
 
