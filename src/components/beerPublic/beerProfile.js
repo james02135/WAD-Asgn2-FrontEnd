@@ -1,6 +1,4 @@
 import React, { Fragment } from "react";
-// import "../../fontawesome";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default ({ beers }) => {
   const BeerProfile = `${beers.name}`;

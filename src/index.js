@@ -6,7 +6,8 @@ import App from "./App";
 import BeerPage from "./components/beerPage";
 import ReviewHelp from "../src/components/beerReview/helpPage";
 import AddBeer from "../src/components/addBeerForm/index";
-import BeerReview from "../src/components/beerReview/index"
+import BeerReview from "../src/components/beerReview/index";
+//import LoginPage from './components/login/index';
 
 
 class Router extends Component {
@@ -20,6 +21,7 @@ class Router extends Component {
               <Route exact path="/" component={App} />
               <Route path="/help" component={ReviewHelp}/>
               <Route path="/addBeer" component={AddBeer}/>
+              {/* <Route path='/login' component={LoginPage} /> */}
               <Route path="/beers/:id/review" component={BeerReview}/>
               <Redirect from="*" to="/" />
             </Switch>

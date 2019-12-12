@@ -1,31 +1,85 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Header from "./components/header/";
 import BeerList from "./components/beerList/";
 import FilterControls from "./components/filterControls/";
-import api from "./dataStore/stubAPI"; 
+//import addBeer from "./components/addBeerForm/";
+import axios from "axios";
 import _ from "lodash";
+import * as server from './server';
+//import { Redirect } from 'react-router-dom';
 
-class App extends Component {
-    state = { search: "", category: "all" };
+export class App extends Component {
+
+    state = { search: "", category: "all", beers: [], reviews: [{}], login:false };
+  
+
     handleChange = (type, value) => {
         type === "name"
         ? this.setState({ search: value })
         : this.setState({ category: value });
     };
-    deleteBeer = (id) => {
-        api.deleteBeer(id); 
-        this.setState({});                          
+
+    
+
+    updateBeer = async ({_id, color, abv}) => {
+      await axios.post(`http://localhost:8080/updateBeer/${_id}`, { color, abv }).then(res=> {
+        console.log(res);
+        console.log(res.data);
+      });
+      this.getBeers();
+      window.location.reload();
     };
-    deleteBeerReview = (name) => {
-      api.deleteBeerReview(name);
+    
+    deleteBeer = async (_id) => {
+      await axios.delete(`http://localhost:8080/deleteBeer/${_id}`).then(res=> {
+        console.log(res);
+        console.log(res.data)
+      });
+      this.getBeers();
+    };
+
+    addBeerReview = async (_id) => {
+      //TODO
+    }
+
+
+    updateBeerReview = async (_id, review) => {
+      //TODO
+    }
+
+    deleteBeerReview = async (_id, review) => {
+      await axios.delete(`http://localhost:8080/deleteReview/`, { params: {_id, review}});
       this.setState({});
+    };
+
+    getBeers = async () => {
+    let {data} = await axios.get('http://localhost:8080/beers/');
+    const beers = data.collections;
+    this.setState({beers: beers});
     }
-    addBeer = (category, name, abv, color, description, examples) => {
-        api.addBeer(category, name, abv, color, description, examples);
-        this.setState({});
-    }
+
+    async componentDidMount () {
+      await this.getBeers();
+      this._isMounted=true
+      try{
+            const resp = await server.getAll();
+            if (this._isMounted){
+            this.setState({
+                     reviews: resp,
+                     login: false,
+                   });
+                  }
+
+         } catch (e){
+           if (this._isMounted) this.setState({
+                    login: true
+                  });
+         }
+    };
+
     render() {
-        let beers = api.getAll();
+       // const login  = this.state;
+        let beers = this.state.beers;
         let filteredBeers = beers.filter(c => {
         const name = `${c.name}`;
         return name.toLowerCase().search(this.state.search.toLowerCase()) !== -1;
@@ -36,16 +90,23 @@ class App extends Component {
             : filteredBeers.filter(c => c.category === this.state.category);
         let sortedBeers = _.sortBy(filteredBeers, c => c.id);
         return (
-            <Fragment>
+            <div>
+              <div>
               <Header noBeers={sortedBeers.length} />
+              </div>
+              <div>
               <FilterControls 
                 onUserInput={this.handleChange}
                 addNewBeer={this.addBeer} />
+              </div>
+              <div>
               <BeerList
                 beers={sortedBeers}
                 deleteHandler={this.deleteBeer}
-              />
-            </Fragment>
+                editHandler={this.updateBeer}/>
+              </div>
+              {/* {login && (<Redirect to='/login'/>)} */}
+            </div>
           );
     }
 }

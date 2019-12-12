@@ -14,7 +14,7 @@ const BeerPage = props => {
           <BeerPublic beers={beers} />         
         </Fragment>
         <Fragment>
-        <Link class="btn btn-primary active" to={`/beers/${id}/review`}>Review the Beer</Link>
+        <Link className="btn btn-primary active" to={`/beers/${id}/review`}>Review the Beer</Link>
         <Route path={"/beers/:id/review"} component= {BeerReview}/> 
         </Fragment>
     </Fragment>

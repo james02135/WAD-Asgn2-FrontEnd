@@ -2,64 +2,55 @@ import React, {Component, Fragment} from "react";
 import "./beerReview.css";
 import Help from "./helpPage";
 import { Route, Link } from "react-router-dom";
-import api from "../../dataStore/stubAPI";
+import axios from 'axios';
 import reviewButtons from "../../config/reviewButtons";
 
 
 export default class BeerReview extends Component {
     state = {
         status: "",
-        name: this.props.name,
-        aroma: this.props.aroma,
-        mouthfeel: this.props.mouthfeel,
-        color: this.props.color,
-        flavor: this.props.flavor,
+        beerName: this.props.beerName,
+        date: this.props.date,
         comments: this.props.comments,
         previousDetails: {
-            name: this.props.name,
-            aroma: this.props.aroma,
-            mouthfeel: this.props.mouthfeel,
-            color: this.props.color,
-            flavor: this.props.flavor,
-            comments: this.props.comments,
+          beerName: this.props.beerName,
+          date: this.props.date,
+          comments: this.props.comments,
         }
     };
 
     handleEdit = () => this.setState({ status: "edit" });
 
-    handleSave = e => {
+    handleSave = async e => {
           e.preventDefault();
-          let updatedName = this.state.name;
-          let updatedAroma = this.state.aroma;
-          let updatedMouthfeel = this.state.mouthfeel;
-          let updatedColor = this.state.color;
-          let updatedFlavor = this.state.flavor;
+          let updatedBeerName = this.state.beerName;
+          let updatedDate = this.state.date;
           let updatedComments = this.state.comments;
-          if (!updatedName || !updatedAroma || !updatedColor || !updatedMouthfeel || !updatedFlavor || !updatedComments) {
+          if (!updatedBeerName || !updatedDate || !updatedComments) {
           return;
           }
-          let { name, aroma, mouthfeel, color, flavor, comments } = this.state;
-          this.setState({ status: "", previousDetails: { name, aroma, mouthfeel, color, flavor, comments } });
-          api.updateBeer(this.state.previousDetails.name, updatedName, updatedAroma, updatedMouthfeel, updatedColor, updatedFlavor, updatedComments);
+          let { beerName, date, comments } = this.state;
+          this.setState({ status: "", previousDetails: { beerName, date, comments } });
+          await axios.post('http://localhost:8080/addReview', {updatedBeerName, updatedDate, updatedComments});
     };    
 
     handleCancel = () => {
-      let { name, aroma, mouthfeel, color, flavor, comments } = this.state.previousDetails;
-      this.setState({ status: "", name, aroma, mouthfeel, color, flavor, comments });
+      let { beerName, date, comments } = this.state.previousDetails;
+      this.setState({ status: "", beerName, date, comments });
     };
 
-    handleNameChange = e => this.setState({ name: e.target.value });
-    handleAromaChange = e => this.setState({ aroma: e.target.value });
-    handleMouthfeelChange = e => this.setState({ mouthfeel: e.target.value });
-    handleColorChange = e => this.setState({ color: e.target.value });
-    handleFlavorChange = e => this.setState({ flavor: e.target.value });
+    handleBeerNameChange = e => this.setState({ beerName: e.target.value });
+    handleDateChange = e => this.setState({ date: e.target.value });
     handleCommentsChange = e => this.setState({ comments: e.target.value });
 
     handleDelete = () =>  this.setState({ status : 'del'} );
 
-    handleConfirm = (e) => {
+    handleConfirm = async (e) => {
       e.preventDefault();
-      this.props.deleteHandler(this.state.name);
+      await axios.delete(`http://localhost:8080/deleteReview/${this.state.review}`).then(res=> {
+        console.log(res);
+        console.log(res.data)
+      })
     };
 
     render() {
@@ -87,68 +78,32 @@ export default class BeerReview extends Component {
                         <div className="form-group">
                             <input type="text"
                                 className="form-control"
-                                value={this.state.name}
-                                onChange={this.handleNameChange}
-                                placeholder="Name">
+                                value={this.state.beerName}
+                                onChange={this.handleBeerNameChange}
+                                placeholder="Brewer and Beer Name">
                             </input>
                         </div>
-
                         <div className="form-group">
                         <input type="text"
                             className="form-control"
-                            value={this.state.aroma}
-                            onChange={this.handleAromaChange}
-                            placeholder="Aroma (1-10)"></input>
+                            value={this.state.date}
+                            onChange={this.handleDateChange}
+                            placeholder="Date of Review(DDMonYYYY)"></input>
                         </div>
-            
-
-                        <div className="form-group">
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.mouthfeel}
-                            onChange={this.handleMouthfeelChange}
-                            placeholder="Mouthfeel (1-10)"></input>
-                        </div>
-
-                        <div className="form-group">
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.color}
-                            onChange={this.handleColorChange}
-                            placeholder="Color (1-10)"></input>
-                        </div>
-
-                        <div className="form-group">
-                            <input type="text"
-                            className="form-control"
-                            value={this.state.flavor}
-                            onChange={this.handleFlavorChange}
-                            placeholder="Flavor (1-10)"></input>
-                        </div>
-
                         <div className="form-group">
                         <textarea class="form-control" rows="5"
                             value={this.state.comments}
                             onChange={this.handleCommentsChange} 
-                            placeholder="Comments: "></textarea>
+                            placeholder="Comments"></textarea>
                         </div>
                 </Fragment>
                
                     <Fragment>
                     <p>
-                      <span> {this.props.name}</span>
+                      <span> {this.props.beerName}</span>
                     </p>
                     <p>
-                      <span> {this.props.aroma} </span>
-                    </p>
-                    <p>
-                      <span> {this.props.mouthfeel} </span>
-                    </p>
-                    <p>
-                      <span> {this.props.color} </span>
-                    </p>
-                    <p>
-                      <span> {this.props.flavor} </span>
+                      <span> {this.props.date} </span>
                     </p>
                     <p>
                       <span> {this.props.comments} </span>
@@ -175,10 +130,11 @@ export default class BeerReview extends Component {
                         </div>
                 </Fragment>
             </form>
-            <div>
-                <Route path="/help" component= {Help} />
-            </div>
-            
+              <Fragment>
+                <div>
+                    <Route path="/help" component= {Help} />
+                </div>
+                </Fragment>
             </div>
         
         );

@@ -9,6 +9,7 @@ export default class BeerList extends Component {
         key={c.name} 
         beers={c} 
         deleteHandler={this.props.deleteHandler}
+        editHandler={this.props.editHandler}
     />
     ));
     return (

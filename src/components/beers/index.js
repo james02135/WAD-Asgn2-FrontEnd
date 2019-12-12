@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from "react";
 import "./beers.css";
 import buttons from "../../config/mainButtons";
-import api from '../../dataStore/stubAPI'
 import { Link } from "react-router-dom";
+
+
 
 export default class Beers extends Component {
   state = {
     status: "",
+    _id: this.props.beers._id,
     category: this.props.beers.category,
     name: this.props.beers.name,
     picture: this.props.beers.picture,
@@ -18,36 +20,46 @@ export default class Beers extends Component {
       picture: this.props.beers.picture,
       abv: this.props.beers.abv,
       color: this.props.beers.color,
-    }
+    },
   };
-  handleEdit = () => this.setState({ status: "edit" });
-  handleSave = e => {
-        e.preventDefault();
-        let updatedABV = this.state.abv.trim();
-        let updatedColor = this.state.color.trim();
-        if (!updatedABV || !updatedColor) {
-        return;
-        }
-        let { abv, color } = this.state;
-        this.setState({ status: "", previousDetails: { abv, color } });
-        api.updateBeer(this.state.previousDetails.name, updatedABV, updatedColor);
-  };      
+
+  //saving a change
+  handleSave = async e => {
+    e.preventDefault();
+    const obj = {
+      abv: this.state.abv,
+      color: this.state.color
+    };
+    console.log(obj);
+    this.props.editHandler(this.state);    
+  }; 
+  
+  // confirming a deletion
+  handleConfirm = async (e) => {
+    e.preventDefault();
+    this.props.deleteHandler(this.state._id);
+  };
+
+  // cancels the editing
   handleCancel = () => {
     let { name, picture, abv, color } = this.state.previousDetails;
     this.setState({ status: "", name, picture, abv, color });
   };
+
   handleABVChange = e => this.setState({ abv: e.target.value });
+
   handleColorChange = e => this.setState({ color: e.target.value });
+
   handleDelete = () =>  this.setState({ status : 'del'} );
-  handleConfirm = (e) => {
-    e.preventDefault();
-    this.props.deleteHandler(this.state.name);
-  };
+
+  handleEdit = () => this.setState({ status: "edit" });
+
   render() {
     let activeButtons = buttons.normal;
     let leftButtonHandler = this.handleEdit;
     let rightButtonHandler = this.handleDelete;
     let cardColor = "bg-white";
+
     if (this.state.status === "edit") {
       cardColor = "bg-primary";
       activeButtons = buttons.edit;
@@ -59,6 +71,9 @@ export default class Beers extends Component {
       leftButtonHandler = this.handleCancel;
       rightButtonHandler = this.handleConfirm;
     }
+
+    const placeholder = (this.props.beers.picture) ? this.props.beers.picture.thumbnail : '';
+
     return (
       <div className="col-sm-3">
       <div className={`card  ${cardColor}`}>
@@ -67,7 +82,7 @@ export default class Beers extends Component {
         <img
             className="card-img-tag center "
             alt={this.props.beers.name}
-            src={this.props.beers.picture.thumbnail}
+            src={placeholder}
           />
         </Link>
           <div className="card-body">
@@ -96,7 +111,7 @@ export default class Beers extends Component {
             ) : (
               <Fragment>
                 <p>
-                  <span> {this.props.beers.abv}</span>
+                  <span> {this.props.beers.abv} </span>
                 </p>
                 <p>
                   <span> {this.props.beers.color} </span>

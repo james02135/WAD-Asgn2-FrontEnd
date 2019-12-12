@@ -42,14 +42,11 @@ export default class FilterControls extends Component {
                 </select>
 
                 <span className="col-md-3"> 
-                <Link class="btn btn-light active float-right"
-                    to={'/addBeer'}>Add A Beer</Link> 
+                <Link className="btn btn-light active float-right"
+                    to={'/addBeer'}>Add A New Beer Style</Link> 
                 <Route path="/addBeer" component= {AddBeer} />
-            
                 </span>
-
                 </h4>
-            
             </div>
         </div>
         );
